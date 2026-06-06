@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HR Policy Portal</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #f4f6f9;
+    }
+
+    /* HEADER */
+    .header {
+      background: #1f4e79;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    /* MENU */
+    .menu {
+      display: flex;
+      justify-content: center;
+      background: white;
+      padding: 10px;
+      gap: 10px;
+    }
+
+    .menu button {
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      background: #1f4e79;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .menu button:hover {
+      background: #0f2d4a;
+    }
+
+    /* CONTENT */
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+    }
+
+    a {
+      text-decoration: none;
+      color: #1f4e79;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="header">
+  📂 Company HR Policy Portal
+</div>
+
+<div class="menu">
+  <button onclick="showCategory('home')">Home</button>
+  <button onclick="showCategory('hr')">HR</button>
+  <button onclick="showCategory('admin')">Admin</button>
+  <button onclick="showCategory('finance')">Finance</button>
+</div>
+
+<div class="container" id="content">
+
+</div>
+
+<script>
+
+// 📁 FILE DATABASE
+const data = {
+  home: [
+    {name: "HR Policy", file: "policies/hr.pdf"},
+    {name: "Leave Policy", file: "policies/leave.pdf"},
+    {name: "Admin Policy", file: "policies/admin.pdf"},
+    {name: "Finance Policy", file: "policies/finance.pdf"}
+  ],
+
+  hr: [
+    {name: "HR Policy", file: "policies/hr.pdf"}
+  ],
+
+  admin: [
+    {name: "Admin Policy", file: "policies/admin.pdf"}
+  ],
+
+  finance: [
+    {name: "Finance Policy", file: "policies/finance.pdf"}
+  ]
+};
+
+function showCategory(cat) {
+
+  const container = document.getElementById("content");
+  container.innerHTML = "";
+
+  data[cat].forEach(item => {
+
+    const div = document.createElement("div");
+    div.className = "card";
+
+    div.innerHTML = `
+      📄 <a href="${item.file}" target="_blank">
+        ${item.name}
+      </a>
+    `;
+
+    container.appendChild(div);
+
+  });
+
+}
+
+// default load
+showCategory('home');
+
+</script>
+
+</body>
+</html>
