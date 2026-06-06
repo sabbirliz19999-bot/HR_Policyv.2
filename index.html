@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HR Policy Library</title>
+</head>
+<body>
+
+<h1>📂 Company Policy Documents</h1>
+
+<ul id="fileList"></ul>
+
+<script>
+
+const files = [
+  "2026-03-30-JD-Admin-AGM.docx.pdf",
+  "Apartment Booking Policy.docx.pdf",
+  "HRM-POL-LDC-25-165-Canteen Management Policy.docx.pdf"
+];
+
+const folder = "Test PDF/";
+
+const list = document.getElementById("fileList");
+
+files.forEach(file => {
+  const li = document.createElement("li");
+  li.innerHTML = `<a href="${folder + file}" target="_blank">${file}</a>`;
+  list.appendChild(li);
+});
+
+</script>
+
+</body>
+</html>
